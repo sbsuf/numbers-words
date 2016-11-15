@@ -12,5 +12,8 @@ describe('numbers_words') do
   it("returns the written form of numbers in the tens") do
     expect(40.to_words()).to(eq("forty"))
   end
+  it("returns the written form of numbers not divisible by 10") do
+    expect(45.to_words()).to(eq("forty-five"))
+  end
 
 end
