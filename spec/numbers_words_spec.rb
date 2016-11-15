@@ -13,7 +13,15 @@ describe('numbers_words') do
     expect(40.to_words()).to(eq("forty"))
   end
   it("returns the written form of numbers not divisible by 10") do
-    expect(45.to_words()).to(eq("forty-five"))
+    expect(45.to_words()).to(eq("forty five"))
+  end
+  it("returns the written form of numbers in the hundreds") do
+    expect(100.to_words()).to(eq("one hundred"))
+  end
+  it("returns the written form of numbers in the hundreds not evenly divisible by 100") do
+    expect(125.to_words()).to(eq("one hundred twenty five"))
+    expect(120.to_words()).to(eq("one hundred twenty"))
+
   end
 
 end

@@ -3,6 +3,7 @@ class Fixnum
     singles = {0 => "", 1 => "one", 2 => "two", 3 => "three", 4 => "four", 5 => "five", 6 => "six", 7 => "seven", 8 => "eight", 9 => "nine"}
     teens = {11 => "eleven", 12 => "twelve", 13 => "thirteen", 14 => "fourteen", 15 => "fifteen", 16 => "sixteen", 17 => "seventeen", 18 => "eighteen", 19 => "nineteen"}
     tens = {1 => "ten", 2 => "twenty", 3 => "thirty", 4 => "forty", 5 => "fifty", 6 => "sixty", 7 => "seventy", 8 => "eighty", 9 => "ninety"}
+    hundreds = {1 => "one hundred", 2 => "two hundred", 3 => "three hundred", 4 => "four hundred", 5 => "five hundred", 6 => "six hundred", 7 => "seven hundred", 8 => "eight hundred", 9 => "nine hundred"}
     my_digits = self.to_s.split("")
     my_digits.reverse!
     my_words = []
@@ -21,8 +22,19 @@ class Fixnum
       my_words.push(singles.fetch(my_digits[0].to_i))
       my_words.push(tens.fetch(my_digits[1].to_i))
       my_words.reverse!
-      final_words = my_words.join("-")
+      final_words = my_words.join(" ")
       final_words
+    elsif my_digits.length.==(3) && self.%(100).==(0)
+      my_words.push(hundreds.fetch(my_digits[2].to_i))
+      final_words = my_words.join(" ")
+      final_words
+    elsif my_digits.length.==(3) && self.%(100).!=(0)
+      my_words.push(singles.fetch(my_digits[0].to_i))
+      my_words.push(tens.fetch(my_digits[1].to_i))
+      my_words.push(hundreds.fetch(my_digits[2].to_i))
+      my_words.reverse!
+      final_words = my_words.join(" ")
+      final_words.strip
     end
   end
 end
