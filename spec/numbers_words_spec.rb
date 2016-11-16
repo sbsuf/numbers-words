@@ -27,8 +27,13 @@ describe('numbers_words') do
     expect(120.to_words()).to(eq("one hundred twenty"))
   end
   # thousands
-  it("returns the written form of numbers in the hundreds not evenly divisible by 100") do
+  it("returns the written form of numbers in the thousands not evenly divisible by 100") do
     expect(1000.to_words()).to(eq("one thousand"))
     expect(1125.to_words()).to(eq("one thousand one hundred twenty five"))
+  end
+  # ten thousands
+  it("returns the written form of numbers in the tens of thousands not evenly divisible by 100") do
+    expect(10000.to_words()).to(eq("ten thousand"))
+    expect(11125.to_words()).to(eq("ten thousand one hundred twenty five"))
   end
 end
